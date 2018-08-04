@@ -1,14 +1,30 @@
+
+// Dependencies
+// =============================================================
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var table= [];
+var wait= [];
 
+=======
+// Sets up the Express App
+// =============================================================
 var app = express();
-var PORT = 2121;
+var PORT = process.env.PORT || 2121;
 
-var reservations= [];
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-var waitList= [];
+// Table Reservation (DATA)
+// =============================================================
 
+
+// Starts the server to begin listening
+// =============================================================
 app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-   });
+  console.log("App listening on PORT " + PORT);
+});
+
