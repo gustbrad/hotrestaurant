@@ -1,5 +1,7 @@
+
 // Dependencies
 // =============================================================
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
@@ -15,9 +17,19 @@ app.use(bodyParser.json());
 
 // Table Reservation (DATA)
 // =============================================================
+
 var table = [
   {
     routeName: "tables",
+    customerName: "",
+    phoneNumber: "",
+    customerEmail: "",
+    customerID: ""
+  }
+];
+
+var wait = [
+  {
     customerName: "",
     phoneNumber: "",
     customerEmail: "",
@@ -56,8 +68,10 @@ app.post("/api/tables", function(req, res) {
 });
 
 
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
+
