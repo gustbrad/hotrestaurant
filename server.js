@@ -30,6 +30,7 @@ var table = [
 
 var wait = [
   {
+    routeName: "wait",
     customerName: "",
     phoneNumber: "",
     customerEmail: "",
@@ -56,6 +57,11 @@ app.get("/reserve", function(req, res) {
 // Displays all tables
 app.get("/api/tables", function(req, res) {
   return res.json(table);
+});
+
+// Displays all tables
+app.get("/api/waitlist", function(req, res) {
+  return res.json(wait);
 });
 
 //Create new table reservation
