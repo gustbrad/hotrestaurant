@@ -17,6 +17,15 @@ app.use(bodyParser.json());
 // =============================================================
 var table = [
   {
+    customerName: "Bob1",
+    phoneNumber: "111-111-1111",
+    customerEmail: "bob@fakeemail.com",
+    customerID: "1"
+  }
+];
+
+var wait = [
+  {
     customerName: "",
     phoneNumber: "",
     customerEmail: "",
@@ -24,6 +33,9 @@ var table = [
   }
 ];
 
+app.get("/", function(req, res) {
+  res.send("Welcome to the hot restaurant page");
+});
 
 
 
