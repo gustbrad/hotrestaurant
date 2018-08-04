@@ -64,14 +64,7 @@ app.get("/api/waitlist", function(req, res) {
   return res.json(wait);
 });
 
-//Create new table reservation
-app.post("/api/tables", function(req, res) {
-  var newTable = req.body;
-  newTable.routeName= newTable.customerName;
-  console.log(newTable);
-  table.push(newTable);
-  res.json(newTable);
-});
+
 
 // Create New Characters - takes in JSON input
 app.post("/api/tables", function(req, res) {
@@ -85,7 +78,8 @@ app.post("/api/tables", function(req, res) {
 
   console.log(newReservation);
 
-  if (table.length < 5) {
+  console.log(table.length)
+  if (table.length < 6) {
     table.push(newReservation);
   } else {
     wait.push(newReservation)
