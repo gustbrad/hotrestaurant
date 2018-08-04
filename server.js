@@ -21,20 +21,20 @@ app.use(bodyParser.json());
 var table = [
   {
     routeName: "tables",
-    customerName: "",
+    name: "",
     phoneNumber: "",
-    customerEmail: "",
-    customerID: ""
+    email: "",
+    uniqueID: ""
   }
 ];
 
 var wait = [
   {
     routeName: "wait",
-    customerName: "",
+    name: "",
     phoneNumber: "",
-    customerEmail: "",
-    customerID: ""
+    email: "",
+    uniqueID: ""
   }
 ];
 
@@ -72,6 +72,31 @@ app.post("/api/tables", function(req, res) {
   table.push(newTable);
   res.json(newTable);
 });
+
+// Create New Characters - takes in JSON input
+app.post("/api/tables", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var newReservation = req.body;
+
+  // Using a RegEx Pattern to remove spaces from newCharacter
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  //newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newReservation);
+
+  if (table.length < 5) {
+    table.push(newReservation);
+  } else {
+    wait.push(newReservation)
+  }
+
+
+  res.json(newReservation);
+});
+
+
+
 
 
 
