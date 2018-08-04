@@ -75,30 +75,24 @@
 
   <script type="text/javascript">
     $("#submit").on("click", function() {
-      var name = $("#reserve_name").val().trim();
-      var phoneNumber = $("#reserve_phone").val().trim();
-      var email= $("#reserve_email").val().trim();
-      var uniqueId= $("#reserve_uniqueID").val().trim();
-
+        event.preventDefault();
+        var newReservation = {
+      name: $("#reserve_name").val().trim(),
+      phoneNumber:$("#reserve_phone").val().trim(),
+      email: $("#reserve_email").val().trim(),
+      uniqueId: $("#reserve_uniqueID").val().trim()
+        }
+console.log(newReservation)
       // Using a RegEx Pattern to remove spaces from searchedCharacter
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       //searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
-
-      $.get("/api/characters/" + searchedCharacter, function(data) {
-        console.log(data);
-        if (data) {
-          $("#stats").show();
-          $("#name").text(data.name);
-          $("#role").text(data.role);
-          $("#age").text(data.age);
-          $("#force-points").text(data.forcePoints);
-        }
-        else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
-      });
+      $.post("/api/tables", newReservation)
+        .then(function(data) {
+          console.log("tables.html", data);
+          alert("Adding Reservation");
+        });
     });
+      
   </script>
 </body>
 </html>
